@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBean;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,9 @@ namespace mainFormPlugin
         public frmMain()
         {
             InitializeComponent();
+            Form child = MyBeanFactoryTools.GetBean("homePage") as Form;
+            (child as IShowAsChild).ShowAsChild(tsMain);
         }
+
     }
 }

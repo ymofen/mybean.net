@@ -28,46 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.pgcMain = new System.Windows.Forms.TabControl();
+            this.tsMain = new System.Windows.Forms.TabPage();
+            this.mnuMain = new System.Windows.Forms.MenuStrip();
+            this.muiFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.muiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.pgcMain.SuspendLayout();
+            this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // pgcMain
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件FToolStripMenuItem,
-            this.关于AToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.pgcMain.Controls.Add(this.tsMain);
+            this.pgcMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgcMain.Location = new System.Drawing.Point(0, 25);
+            this.pgcMain.Name = "pgcMain";
+            this.pgcMain.SelectedIndex = 0;
+            this.pgcMain.Size = new System.Drawing.Size(717, 363);
+            this.pgcMain.TabIndex = 0;
             // 
-            // 文件FToolStripMenuItem
+            // tsMain
             // 
-            this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.文件FToolStripMenuItem.Text = "文件(&F)";
+            this.tsMain.Location = new System.Drawing.Point(4, 22);
+            this.tsMain.Name = "tsMain";
+            this.tsMain.Padding = new System.Windows.Forms.Padding(3);
+            this.tsMain.Size = new System.Drawing.Size(709, 337);
+            this.tsMain.TabIndex = 0;
+            this.tsMain.Text = "主页";
+            this.tsMain.UseVisualStyleBackColor = true;
             // 
-            // 关于AToolStripMenuItem
+            // mnuMain
             // 
-            this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.关于AToolStripMenuItem.Text = "关于(&A)";
+            this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.muiFile,
+            this.muiAbout});
+            this.mnuMain.Location = new System.Drawing.Point(0, 0);
+            this.mnuMain.Name = "mnuMain";
+            this.mnuMain.Size = new System.Drawing.Size(717, 25);
+            this.mnuMain.TabIndex = 1;
+            this.mnuMain.Text = "主菜单";
+            // 
+            // muiFile
+            // 
+            this.muiFile.Name = "muiFile";
+            this.muiFile.Size = new System.Drawing.Size(58, 21);
+            this.muiFile.Text = "文件(&F)";
+            // 
+            // muiAbout
+            // 
+            this.muiAbout.Name = "muiAbout";
+            this.muiAbout.Size = new System.Drawing.Size(60, 21);
+            this.muiAbout.Text = "关于(&A)";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 388);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.pgcMain);
+            this.Controls.Add(this.mnuMain);
             this.Name = "frmMain";
             this.Text = "frmMain";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.pgcMain.ResumeLayout(false);
+            this.mnuMain.ResumeLayout(false);
+            this.mnuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -75,8 +99,10 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件FToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于AToolStripMenuItem;
+        private System.Windows.Forms.TabControl pgcMain;
+        private System.Windows.Forms.TabPage tsMain;
+        private System.Windows.Forms.MenuStrip mnuMain;
+        private System.Windows.Forms.ToolStripMenuItem muiFile;
+        private System.Windows.Forms.ToolStripMenuItem muiAbout;
     }
 }

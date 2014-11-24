@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBean;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +10,20 @@ using System.Windows.Forms;
 
 namespace mainFormPlugin
 {
-    public partial class frmHomePage : Form
+    public partial class frmHomePage : Form, IShowAsChild
     {
         public frmHomePage()
         {
             InitializeComponent();
+        }
+
+        void IShowAsChild.ShowAsChild(Control parentControl)
+        {
+            this.TopLevel = false;
+            Parent = parentControl;
+            this.Dock = DockStyle.Fill;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Show();
         }
     }
 }
