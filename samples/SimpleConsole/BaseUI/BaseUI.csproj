@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4018729A-71D4-4AEF-BBBC-9A9A06BD01AB}</ProjectGuid>
+    <ProjectGuid>{E3C3F244-9B37-4D6B-8A8E-2C4A88480B1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mainFormPlugin</RootNamespace>
-    <AssemblyName>mainFormPlugin</AssemblyName>
+    <RootNamespace>BaseUI</RootNamespace>
+    <AssemblyName>BaseUI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,43 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmHomePage.cs">
+    <Compile Include="IUIPlugin.cs" />
+    <Compile Include="MyBeanPluginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHomePage.Designer.cs">
-      <DependentUpon>frmHomePage.cs</DependentUpon>
+    <Compile Include="MyBeanPluginForm.Designer.cs">
+      <DependentUpon>MyBeanPluginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LibExport.cs" />
-    <Compile Include="LibPluginFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmHomePage.resx">
-      <DependentUpon>frmHomePage.cs</DependentUpon>
+    <EmbeddedResource Include="MyBeanPluginForm.resx">
+      <DependentUpon>MyBeanPluginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\core\MyBean\MyBean.csproj">
-      <Project>{21237B72-8B26-4F1E-BE73-420A675B7AFC}</Project>
-      <Name>MyBean</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BaseUI\BaseUI.csproj">
-      <Project>{E3C3F244-9B37-4D6B-8A8E-2C4A88480B1D}</Project>
-      <Name>BaseUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MainConsole\MainConsole.csproj">
-      <Project>{3CF9BD00-E5FE-4F8A-BE58-0501EEB3E6E0}</Project>
-      <Name>MainConsole</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

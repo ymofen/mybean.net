@@ -7,23 +7,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BaseUI;
 
 namespace mainFormPlugin
 {
-    public partial class frmHomePage : Form, IShowAsChild
+    public partial class frmHomePage : MyBeanPluginForm
     {
         public frmHomePage()
         {
             InitializeComponent();
         }
 
-        void IShowAsChild.ShowAsChild(Control parentControl)
-        {
-            this.TopLevel = false;
-            Parent = parentControl;
-            this.Dock = DockStyle.Fill;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Show();
-        }
+
     }
 }
