@@ -45,7 +45,6 @@
     <Compile Include="IApplictionContext.cs" />
     <Compile Include="ILibInstance.cs" />
     <Compile Include="IPluginFactory.cs" />
-    <Compile Include="IPluginForm.cs" />
     <Compile Include="MyBeanFactoryTools.cs" />
     <Compile Include="MyBeanVars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

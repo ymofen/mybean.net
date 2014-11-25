@@ -17,7 +17,7 @@ namespace mainFormPlugin
         {
             InitializeComponent();
             Form child = MyBeanFactoryTools.GetBean("homePage") as Form;
-            (child as IShowAsChild).ShowAsChild(tsMain);
+            (child as BaseUI.IShowAsChild).ShowAsChild(tsMain);
         }
 
     }

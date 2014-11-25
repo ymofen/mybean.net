@@ -31,8 +31,12 @@ namespace MyBean.Lib
         public object GetPlugin(string pluginID)
         {
             PluginInfo p =(PluginInfo)pluginMap[pluginID];
-            object r = System.Activator.CreateInstance(p.classType);
-            return r;
+            object robj = null;
+            if (p!=null)
+            {
+                robj = System.Activator.CreateInstance(p.classType);
+            }
+            return robj;
         }
 
         public PluginInfo RegisterPlugin(string pluginID, Type classType)

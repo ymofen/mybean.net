@@ -7,9 +7,9 @@ using System.IO;
 
 namespace MyBean
 {
-    public class MyBeanConsole: IApplictionContext
+    public class ApplicationContext: IApplictionContext
     {
-        static MyBeanConsole instance = new MyBeanConsole();
+        static ApplicationContext instance = new ApplicationContext();
 
         string rootPath;
         Hashtable pluginIDMap = new Hashtable();
@@ -60,12 +60,36 @@ namespace MyBean
         object IApplictionContext.GetBean(string beanID)
         {
             object obj = pluginIDMap[beanID];
+            if (obj != null)
+            {
+                MyBeanLibLoader libLoader = obj as MyBeanLibLoader;
+                return libLoader.GetPluginFactory().GetPlugin(beanID);  
+            }else
+            {
+                return null;
+            }
+
+        }
+
+        /// <summary>
+        ///   获取一个插件,如果找不到插件则抛出异常
+        /// </summary>
+        /// <param name="beanID"></param>
+        /// <returns>返回插件对象</returns>
+        object IApplictionContext.CheckGetBean(String beanID)
+        {
+            object obj = pluginIDMap[beanID];
             if (obj == null)
             {
-                throw new Exception(String.Format("pluginFactory of {0} not found!", beanID));
+                throw new Exception(String.Format("找不对应的插件工厂[{0}]", beanID));
             }
             MyBeanLibLoader libLoader = obj as MyBeanLibLoader;
-            return libLoader.GetPluginFactory().GetPlugin(beanID);
+            object rObj = libLoader.GetPluginFactory().GetPlugin(beanID);
+            if (rObj == null)
+            {
+                throw new Exception(String.Format("插件创建失败[{0}]", beanID));
+            }
+            return rObj;
         }
 
         public static void DoInitialize(String rootPath)
