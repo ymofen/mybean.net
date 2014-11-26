@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4018729A-71D4-4AEF-BBBC-9A9A06BD01AB}</ProjectGuid>
+    <ProjectGuid>{8A7D5367-E62E-4D62-82CA-17CABE2DFB72}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mainFormPlugin</RootNamespace>
-    <AssemblyName>mainFormPlugin</AssemblyName>
+    <RootNamespace>IMPlugin</RootNamespace>
+    <AssemblyName>IMPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,8 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -42,20 +40,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DebugConsole\frmDebugConsole.cs">
+    <Compile Include="DAysncTcpClient.cs" />
+    <Compile Include="frmChat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DebugConsole\frmDebugConsole.Designer.cs">
-      <DependentUpon>frmDebugConsole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmHomePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHomePage.Designer.cs">
-      <DependentUpon>frmHomePage.cs</DependentUpon>
+    <Compile Include="frmChat.Designer.cs">
+      <DependentUpon>frmChat.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -68,17 +60,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DebugConsole\frmDebugConsole.resx">
-      <DependentUpon>frmDebugConsole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHomePage.resx">
-      <DependentUpon>frmHomePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\core\MyBean\MyBean.csproj">
       <Project>{21237B72-8B26-4F1E-BE73-420A675B7AFC}</Project>
       <Name>MyBean</Name>
@@ -87,6 +68,14 @@
       <Project>{E3C3F244-9B37-4D6B-8A8E-2C4A88480B1D}</Project>
       <Name>BaseUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmChat.resx">
+      <DependentUpon>frmChat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

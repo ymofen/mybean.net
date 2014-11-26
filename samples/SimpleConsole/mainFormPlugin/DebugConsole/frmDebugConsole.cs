@@ -17,15 +17,17 @@ namespace mainFormPlugin.DebugConsole
             InitializeComponent();
         }
 
-        private void actGetBean_Execute(object sender, EventArgs e)
+        private void GetBean_Click(object sender, EventArgs e)
         {
             String beanID = txtBeanID.Text.Trim();
-            if (beanID.Length >0)
+            if (beanID.Length > 0)
             {
                 object obj = MyBeanFactoryTools.GetBean(beanID);
                 (obj as Form).Show();
             }
-            
         }
+
+
+
     }
 }
