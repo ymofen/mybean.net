@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net.Sockets;
+using System.Collections;
 
 namespace IMPlugin
 {
@@ -16,8 +17,11 @@ namespace IMPlugin
         {
             if (rawSocket == null)
             {
-                rawSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IPv4);
-                rawSocket.IOControl(IOControlCode.NonBlockingIO, 1, 0);
+                rawSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                //rawSocket.Blocking = false;
+                byte[] inOptionValues = BitConverter.GetBytes(1);
+                byte[] outOptionValues = BitConverter.GetBytes(0);
+                rawSocket.IOControl(IOControlCode.NonBlockingIO, inOptionValues, outOptionValues);
             }
         }
 
@@ -40,6 +44,10 @@ namespace IMPlugin
             CheckCreateRawSocket();
             
             rawSocket.Connect(host, port);
+
+            ArrayList wr = new ArrayList();
+            wr.Add(this);
+            Socket.Select(null, wr, null, 5000);
         }
 
 

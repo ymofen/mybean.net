@@ -12,9 +12,18 @@ namespace IMPlugin
 {
     public partial class frmMain : Form
     {
+        DAysncTcpClient tcpClient = new DAysncTcpClient();
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tcpClient.Host = "127.0.0.1";
+            tcpClient.Port = 9983;
+            tcpClient.Connect(5000);
+
         }
     }
 }
