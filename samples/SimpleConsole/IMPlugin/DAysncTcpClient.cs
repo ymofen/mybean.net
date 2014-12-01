@@ -9,21 +9,14 @@ namespace IMPlugin
 {
     public class DAysncTcpClient
     {
-        private Socket rawSocket = null;
+        private TcpClient rawSocket = new TcpClient();
+
+        private void InnerOnAsyncConnected(IAsyncResult result)
+        {
+            
+        }
 
         private String host;
-
-        private void CheckCreateRawSocket()
-        {
-            if (rawSocket == null)
-            {
-                rawSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //rawSocket.Blocking = false;
-                byte[] inOptionValues = BitConverter.GetBytes(1);
-                byte[] outOptionValues = BitConverter.GetBytes(0);
-                rawSocket.IOControl(IOControlCode.NonBlockingIO, inOptionValues, outOptionValues);
-            }
-        }
 
         public String Host
         {
@@ -39,17 +32,14 @@ namespace IMPlugin
             set { port = value; }
         }
 
-        public void Connect(int timeOut)
-        {
-            CheckCreateRawSocket();
-            
+        public void Connect()
+        {           
             rawSocket.Connect(host, port);
-
-            ArrayList wr = new ArrayList();
-            wr.Add(this);
-            Socket.Select(null, wr, null, 5000);
         }
 
-
+        public void ConnectASync()
+        {
+            rawSocket.BeginConnect(host, port, new AsyncCallback(InnerOnAsyncConnected), rawSocket);
+        }        
     }
 }
