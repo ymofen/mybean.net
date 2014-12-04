@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace IMPlugin
 {
@@ -21,6 +25,9 @@ namespace IMPlugin
         public delegate void SocketRecvBufferEvent(byte[] buf, int len);
 
         public event TcpClientEvent OnConnected;
+
+        public event TcpClientEvent OnDisconnected;
+
         public event SocketRecvBufferEvent OnRecvBuffer;
         
         private TcpClient rawSocket = new TcpClient();
@@ -42,47 +49,78 @@ namespace IMPlugin
         }
 
 
-        private void InnerDoConnected()
+         private void InnerDoConnected()
         {
             if (OnConnected != null)
             {
-                OnConnected(this);
+                OnConnected(this);                
             }
             InnerPostRecv();
         }
 
-        public void Read_Callback(IAsyncResult ar)
+        private void InnerDoDisconnected()
+        {
+            this.rawSocket.Client.Disconnect(true);
+            if (OnDisconnected != null)
+            {
+                OnDisconnected(this);
+            }
+        }
+
+        /// <summary>
+        ///   接受数据异步事件
+        /// </summary>
+        /// <param name="ar"></param>
+        void Read_Callback(IAsyncResult ar)
         {
             StateObject so = (StateObject)ar.AsyncState;
             Socket s = so.workSocket;
 
-            int read = s.EndReceive(ar);
 
-            if (read > 0)
+            int len = s.EndReceive(ar);
+
+            if (len > 0)
             {
-                so.sb.Append(Encoding.ASCII.GetString(so.buffer, 0, read));
-                s.BeginReceive(so.buffer, 0, StateObject.BUFFER_SIZE, 0,
-                                         new AsyncCallback(Read_Callback), so);
+                InnerDoRecvBuffer(so.buffer, len);
+
+                InnerPostRecv();
             }
             else
             {
-                if (so.sb.Length > 1)
-                {
-                    //All of the data has been read, so displays it to the console
-                    string strContent;
-                    strContent = so.sb.ToString();
-                    Console.WriteLine(String.Format("Read {0} byte from socket" +
-                                     "data = {1} ", strContent.Length, strContent));
-                }
-                s.Close();
+                InnerDoDisconnected();
             }
         }
+
+        /// <summary>
+        ///   发送异步事件
+        /// </summary>
+        /// <param name="ar"></param>
+        void Send_Callback(IAsyncResult ar)
+        {
+            int len = this.rawSocket.Client.EndSend(ar);
+
+            if (len > 0)
+            {
+                
+            }
+            else
+            {
+                InnerDoDisconnected();
+            }
+        }
+        
 
         private void InnerOnAsyncConnected(IAsyncResult result)
         {
             if (rawSocket.Connected)
             {
+                rawSocket.Client.EndConnect(result);
+                // 触发连接事件
                 InnerDoConnected();
+            }else
+            {
+                // 触发断开事件
+                InnerDoDisconnected();
             }
         }
 
@@ -95,23 +133,37 @@ namespace IMPlugin
         }
 
         
-        private Int16 port;
+        private int port;
 
-        public Int16 Port
+        public int Port
         {
             get { return port; }
             set { port = value; }
         }
 
+        /// <summary>
+        ///   开始同步连接
+        /// </summary>
         public void Connect()
         {           
             rawSocket.Connect(host, port);
+
+            // 触发连接事件
             OnConnected(this);  
         }
 
+        /// <summary>
+        ///   开始异步连接
+        /// </summary>
         public void ConnectASync()
-        {
+        {            
             rawSocket.BeginConnect(host, port, new AsyncCallback(InnerOnAsyncConnected), rawSocket);
-        }        
+        }
+        
+        public void PostASyncBuffer(byte[] buf, int len)
+        {
+            rawSocket.Client.BeginSend(buf, 0, len, 0,new AsyncCallback(Send_Callback), rawSocket);
+        }
+
     }
 }
