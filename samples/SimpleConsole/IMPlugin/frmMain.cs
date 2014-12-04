@@ -22,7 +22,7 @@ namespace IMPlugin
         {
             tcpClient.Host = "127.0.0.1";
             tcpClient.Port = 9983;
-            tcpClient.Connect(5000);
+            tcpClient.ConnectASync();
 
         }
     }
