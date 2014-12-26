@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8A7D5367-E62E-4D62-82CA-17CABE2DFB72}</ProjectGuid>
+    <ProjectGuid>{66A175F9-F130-4A78-BAA8-81AAC23E1B86}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IMPlugin</RootNamespace>
-    <AssemblyName>IMPlugin</AssemblyName>
+    <RootNamespace>DMQPlugin</RootNamespace>
+    <AssemblyName>DMQPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,13 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAysncTcpClient.cs" />
-    <Compile Include="frmChat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmChat.Designer.cs">
-      <DependentUpon>frmChat.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,22 +53,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\..\core\MyBean\MyBean.csproj">
       <Project>{21237B72-8B26-4F1E-BE73-420A675B7AFC}</Project>
       <Name>MyBean</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BaseUI\BaseUI.csproj">
-      <Project>{E3C3F244-9B37-4D6B-8A8E-2C4A88480B1D}</Project>
-      <Name>BaseUI</Name>
+    <ProjectReference Include="..\DMQLib\DMQLib.csproj">
+      <Project>{5B418F53-A080-439A-93ED-A592C992D1F5}</Project>
+      <Name>DMQLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="frmChat.resx">
-      <DependentUpon>frmChat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

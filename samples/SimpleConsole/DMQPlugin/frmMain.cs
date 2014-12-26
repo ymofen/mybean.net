@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices.ComTypes;
+using DMQLib;
 
 
 namespace IMPlugin
@@ -69,21 +71,19 @@ namespace IMPlugin
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //CompiledPacker msgpack = new CompiledPacker();
-            
-            //String s = txtSend.Text.Trim();
-            //UTF8Encoding utf8 = new UTF8Encoding();
-            //byte[] buf = utf8.GetBytes(s);
-            //diocpTcpClient.PostASyncBuffer(buf, buf.Length);
+          
+            String s = txtSend.Text.Trim();
+            UTF8Encoding utf8 = new UTF8Encoding();
+            byte[] buf = utf8.GetBytes(s);
+            diocpTcpClient.PostASyncBuffer(buf, buf.Length);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //Dictionary<String, object> dict = new Dictionary<String, object>();
-            //dict.Add("param", txtSend.Text.Trim());
-            //CompiledPacker pack = new CompiledPacker();
-            //byte[] binary = pack.Pack(dict);
-            //diocpTcpClient.PostASyncBuffer(binary, binary.Length);            
+            DMQRequestRecord r = new DMQLib.DMQRequestRecord();
+            DMQResponseRecord r2 = new DMQResponseRecord();
+            MessageBox.Show(System.Runtime.InteropServices.Marshal.SizeOf(r).ToString());
+            MessageBox.Show(System.Runtime.InteropServices.Marshal.SizeOf(r2).ToString());
         }
     }
 }
