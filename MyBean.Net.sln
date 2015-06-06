@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBean.Core", "MyBean.Core\MyBean.Core.csproj", "{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBean.Loader", "MyBean.Loader\MyBean.Loader.csproj", "{FA869147-203E-4BA0-B3A1-FB92B7B04CD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA869147-203E-4BA0-B3A1-FB92B7B04CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA869147-203E-4BA0-B3A1-FB92B7B04CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA869147-203E-4BA0-B3A1-FB92B7B04CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA869147-203E-4BA0-B3A1-FB92B7B04CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
