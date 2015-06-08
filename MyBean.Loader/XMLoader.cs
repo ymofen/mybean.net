@@ -40,6 +40,7 @@ namespace MyBean.Loader
         /// <returns></returns>
         public static int LoadFromAssembly(string resName, ClassFactory classFactory)
         {
+            
             String projectName = Assembly.GetExecutingAssembly().GetName().Name.ToString();
             Debug.WriteLine(String.Format("当前工程名称:{0}", projectName));
 
