@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyBean.Core">
-      <HintPath>..\..\..\DCGPS\DCGPSProject\DCGPS\libs\MyBean.Core.dll</HintPath>
-    </Reference>
     <Reference Include="MyBean.Loader">
       <HintPath>..\..\..\DCGPS\DCGPSProject\DCGPS\libs\MyBean.Loader.dll</HintPath>
     </Reference>
@@ -53,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyBean.Core\MyBean.Core.csproj">
+      <Project>{e6f14636-7a7f-4646-bc22-bf342a7dc3ab}</Project>
+      <Name>MyBean.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
