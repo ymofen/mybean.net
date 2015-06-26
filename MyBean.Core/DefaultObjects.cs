@@ -1,4 +1,5 @@
 ﻿using MyBean.Core.DesignMode;
+using MyBean.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,15 @@ namespace MyBean.Core
     public static class DefaultObjects
     {
         /// <summary>
-        ///  默认的类工厂
-        /// </summary>
-        private static ClassFactory defaultClassFactory = new ClassFactory();
-
-        /// <summary>
         ///  订阅中心
         /// </summary>
         private static SubscribeCenter subscribeCenter = new SubscribeCenter();
 
+
         /// <summary>
-        ///  获取一个默认的类工厂
+        ///  全局共享的Application接口
         /// </summary>
-        public static ClassFactory ClassFactory { get { return defaultClassFactory; } }
-
-
+        public static IApplicationContext ApplicationContext { get; set; }
  
 
         /// <summary>

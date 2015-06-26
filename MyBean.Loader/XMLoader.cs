@@ -1,4 +1,5 @@
 ﻿using MyBean.Core;
+using MyBean.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ namespace MyBean.Loader
 {
     public class XMLoader
     {
-        public static int LoadFromXElement(XElement objRoot, ClassFactory classFactory)
+        public static int LoadFromXElement(XElement objRoot, IClassFactory classFactory)
         {
             var objects = from obj in objRoot.Elements("object") select obj;
             int j = 0;
@@ -25,7 +26,7 @@ namespace MyBean.Loader
         }
 
 
-        public static int LoadFromXmlFile(string xmlFileName, ClassFactory classFactory)
+        public static int LoadFromXmlFile(string xmlFileName, IClassFactory classFactory)
         {
             XElement root = XElement.Load(xmlFileName);
             int j = LoadFromXElement(root, classFactory);
@@ -38,7 +39,7 @@ namespace MyBean.Loader
         /// <param name="resName">该资源下必须在根节点下面有objects</param>
         /// <param name="classFactory"></param>
         /// <returns></returns>
-        public static int LoadFromAssembly(string resName, ClassFactory classFactory)
+        public static int LoadFromAssembly(string resName, IClassFactory classFactory)
         {
             
             String projectName = Assembly.GetExecutingAssembly().GetName().Name.ToString();

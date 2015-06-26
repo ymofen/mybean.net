@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\libs\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,12 +42,19 @@
   <ItemGroup>
     <Compile Include="ClassFactory.cs" />
     <Compile Include="DefaultObjects.cs" />
+    <Compile Include="Default\DefaultApplicationContext.cs" />
+    <Compile Include="Default\DefaultObjectFactory.cs" />
     <Compile Include="DesignMode\Interface.cs" />
     <Compile Include="DesignMode\SubscribeCenter.cs" />
     <Compile Include="Helper\BytesHelper.cs" />
     <Compile Include="Helper\IntHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
+    <Compile Include="Interfaces\IApplicationContext.cs" />
+    <Compile Include="Interfaces\IAssemblyFactory.cs" />
+    <Compile Include="Interfaces\IClassFactory.cs" />
+    <Compile Include="Interfaces\IObjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Res\StringRes.cs" />
     <Compile Include="TypeHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
