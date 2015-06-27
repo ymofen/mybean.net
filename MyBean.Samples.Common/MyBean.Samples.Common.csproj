@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6F14636-7A7F-4646-BC22-BF342A7DC3AB}</ProjectGuid>
+    <ProjectGuid>{5C0B5346-613E-4083-95F2-17998B6BAF7B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyBean.Core</RootNamespace>
-    <AssemblyName>MyBean.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>MyBean.Samples.Common</RootNamespace>
+    <AssemblyName>MyBean.Samples.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\libs\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,23 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassFactory.cs" />
-    <Compile Include="DefaultObjects.cs" />
-    <Compile Include="Default\DefaultApplicationContext.cs" />
-    <Compile Include="Default\DefaultAssemblyFactory.cs" />
-    <Compile Include="DesignMode\Interface.cs" />
-    <Compile Include="DesignMode\SubscribeCenter.cs" />
-    <Compile Include="Helper\BytesHelper.cs" />
-    <Compile Include="Helper\IntHelper.cs" />
-    <Compile Include="Helper\PathHelper.cs" />
-    <Compile Include="Helper\StringHelper.cs" />
-    <Compile Include="Interfaces\IApplicationContext.cs" />
-    <Compile Include="Interfaces\IAssemblyFactory.cs" />
-    <Compile Include="Interfaces\IClassFactory.cs" />
-    <Compile Include="Interfaces\IObjectFactory.cs" />
+    <Compile Include="ICalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Res\StringRes.cs" />
-    <Compile Include="TypeHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,7 +16,7 @@ namespace MyBean.Core.Default
         public Assembly Value { set; get; }
     }
 
-    public class DefaultObjectFactory : IObjectFactory, IAssemblyFactory
+    public class DefaultAssemblyFactory : IObjectFactory, IAssemblyFactory
     {
         private Hashtable assemblyMap = new Hashtable();
 

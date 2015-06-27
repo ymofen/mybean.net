@@ -1,0 +1,2 @@
+﻿该目录下面可以在编译后期COPY到执行目录下面
+本目录下的两个文件，是基于.Net 4.5构建的，如果版本不一致，请将(MyBean.Samples.ChildPlugin)重新构建，然后Copy到该目录

@@ -1,8 +1,10 @@
 ﻿using MyBean.Core;
+using MyBean.Core.Helper;
 using MyBean.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -30,6 +32,54 @@ namespace MyBean.Loader
         {
             XElement root = XElement.Load(xmlFileName);
             int j = LoadFromXElement(root, classFactory);
+            return j;
+        }
+
+
+        /// <summary>
+        ///  从路径中的文件加载 
+        /// </summary>
+        /// <param name="pathAndFilePattern"></param>
+        /// <param name="classFactory"></param>
+        /// <returns>对象定义个数</returns>
+        /// <remarks>
+        ///   LoadFromXmlFiles("config\\*.xml", classFactory)
+        /// </remarks>
+        public static int LoadFormXmlFiles(string pathAndFilePattern, IClassFactory classFactory)
+        {
+            string s1 = Path.GetFileName(pathAndFilePattern);
+            string s2 = Path.GetDirectoryName(pathAndFilePattern);
+
+
+            string rootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+            Debug.WriteLine("相对路径根目录:" + rootPath);
+
+            string realPath = PathHelper.GetAbsolutePath(rootPath, s2);
+
+            return LoadFormXmlFiles(realPath, s1, classFactory);
+        }
+
+        /// <summary>
+        ///  从路径中的文件加载 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="pattern"></param>
+        /// <param name="classFactory"></param>
+        /// <returns>对象定义个数</returns>
+        /// <remarks>
+        ///   LoadFromXmlFiles("C:\config", "mybean*.xml", classFactory)
+        /// </remarks>
+        public static int LoadFormXmlFiles(string path, string pattern, IClassFactory classFactory)
+        {
+            Debug.WriteLine("加载程序集:{0} {1}", path, pattern);
+            DirectoryInfo info = new DirectoryInfo(path);
+            if (!info.Exists) return 0;
+            FileInfo[] finfos = info.GetFiles(pattern);
+            int j = 0;
+            foreach (FileInfo finfo in finfos)
+            {
+                j = j + LoadFromXmlFile(finfo.FullName, classFactory);                
+            }
             return j;
         }
 

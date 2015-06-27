@@ -170,12 +170,22 @@ namespace MyBean.Core.Default
 
         public object GetObject(string id)
         {
-            return CreateObject(id);
+            object rvalue = CreateObject(id);
+            if (rvalue == null)
+            {
+                throw new Exception(string.Format(StringRes.ExceptionObjectCreateIsNull, id));
+            }
+            return rvalue;
         }
 
         public object GetObject(string id, params object[] args)
         {
-            return GetObject(id, args);        
+            object rvalue = GetObject(id, args);    
+            if (rvalue == null)
+            {
+                throw new Exception(string.Format(StringRes.ExceptionObjectCreateIsNull, id));
+            }
+            return rvalue;    
         }
     }
 
